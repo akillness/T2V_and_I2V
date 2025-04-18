@@ -7,17 +7,37 @@ mkdir -p cache
 # pip 업그레이드
 pip install --upgrade pip
 
-# requirements.txt 설치
-pip install -r requirements.txt
+# 기본 패키지 설치
+pip install torch>=2.0.0
+pip install streamlit>=1.24.0
+pip install pillow>=9.0.0
+pip install numpy>=1.24.0
+pip install accelerate>=0.20.0
+pip install transformers>=4.30.0
+pip install safetensors>=0.3.1
+pip install opencv-python>=4.8.0
+pip install huggingface_hub==0.19.4
 
-# huggingface_hub 설치 확인
-python -c "from huggingface_hub import cached_download; print('huggingface_hub installed successfully')"
+# diffusers 설치 (GitHub에서 직접 설치)
+pip install git+https://github.com/huggingface/diffusers.git
 
-# diffusers 설치 확인
-python -c "from diffusers import LTXPipeline; print('diffusers installed successfully')"
-
-# opencv-python 설치 확인
-python -c "import cv2; print(f'OpenCV version: {cv2.__version__}')"
+# 패키지 설치 확인
+python -c "
+try:
+    import torch
+    import streamlit
+    import PIL
+    import numpy
+    import accelerate
+    import transformers
+    import safetensors
+    import cv2
+    import huggingface_hub
+    from diffusers import LTXPipeline
+    print('All packages installed successfully')
+except ImportError as e:
+    print(f'Error importing package: {e}')
+"
 
 # 모델 다운로드
 python -c "
