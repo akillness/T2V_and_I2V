@@ -32,8 +32,8 @@ def load_text_pipeline():
     device, torch_dtype = get_device()
     pipe = LTXPipeline.from_pretrained(
         "Lightricks/LTX-Video",
-        torch_dtype=torch_dtype,
-        cache_dir="./models"
+        torch_dtype=torch_dtype
+        
     )
     pipe.to(device)
     pipe.enable_attention_slicing()
@@ -48,8 +48,8 @@ def load_image_pipeline():
     device, torch_dtype = get_device()
     pipe = LTXImageToVideoPipeline.from_pretrained(
         "Lightricks/LTX-Video",
-        torch_dtype=torch_dtype,
-        cache_dir="./models"
+        torch_dtype=torch_dtype
+        
     )
     pipe.to(device)
     pipe.enable_attention_slicing()
