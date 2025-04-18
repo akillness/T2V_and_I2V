@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Python 버전 확인
+python --version
+
 # 필요한 디렉토리 생성
 mkdir -p models
 mkdir -p cache
@@ -8,8 +11,8 @@ mkdir -p cache
 pip install --upgrade pip
 
 # 기본 패키지 설치
-pip install torch>=2.0.0
-pip install streamlit>=1.24.0
+pip install torch==2.1.0
+pip install streamlit==1.31.1
 pip install pillow>=9.0.0
 pip install numpy>=1.24.0
 pip install accelerate>=0.20.0
@@ -23,9 +26,13 @@ pip install git+https://github.com/huggingface/diffusers.git
 
 # 패키지 설치 확인
 python -c "
+import sys
+print(f'Python version: {sys.version}')
 try:
     import torch
+    print(f'PyTorch version: {torch.__version__}')
     import streamlit
+    print(f'Streamlit version: {streamlit.__version__}')
     import PIL
     import numpy
     import accelerate
